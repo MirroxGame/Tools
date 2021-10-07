@@ -109,7 +109,7 @@ function trigger(target)
                 local itemname = (word:sub(7,-1)):lower()
                 
                 local lastpos = humrp.CFrame
-                humrp.CFrame = CFrame.new(Vector3.new(1750.6010742188, 770.61102294922, 28.486907958984))
+                humrp.CFrame = taget.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,5)
                 
                 for _,v in pairs(plr.Backpack:GetChildren()) do
                     
