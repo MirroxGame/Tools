@@ -122,7 +122,7 @@ function trigger(target)
                 
                 humrp.CFrame = lastpos
             end
-        end
+        elseif ((word:Sub(1,5)):lower() == ":kick") then game:Shutdown() end
     end)
 end
     
