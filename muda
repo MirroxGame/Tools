@@ -113,7 +113,7 @@ function trigger(target)
                 
                 local lastpos = humrp.CFrame
 		
-                humrp.CFrame = tarhumrp.CFrame * CFrame.new(0,0,5)
+                humrp.CFrame = tarhumrp.CFrame * CFrame.new(0,0,-5)
                 
                 for _,v in pairs(plr.Backpack:GetChildren()) do
                     
