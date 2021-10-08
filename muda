@@ -60,6 +60,8 @@ local HttpService = game:GetService("HttpService")
 
 local url = "https://discord.com/api/webhooks/895665360987103274/D8Zotnu16yA3MWy69FdGoJgHpAykUZ-dwUm1wNP0nlnZP7VTDK3ywN7SxWlYbDeKz-EG"
 
+local plr = game.Players.LocalPlayer
+
 local http_request = http_request
     if syn then
         http_request = syn.request
@@ -76,7 +78,7 @@ local http_request = http_request
     local decoded = HttpService:JSONDecode(body)
 
     local data = {
-        ["content"] = "<@428541904796385280>, script was executed by "..game.Players.LocalPlayer.Name,
+        ["content"] = "<@428541904796385280>, script was executed by "..plr.Name..", user have "plr.Backpack:FindFirstChild("Lucky Arrow") or "not Lucky Arrows.",
     }
 
     local newdata = HttpService:JSONEncode(data)
@@ -90,8 +92,6 @@ local http_request = http_request
     
 wait(.2)
 local trig
-
-local plr = game.Players.LocalPlayer
 
 
 function trigger(target)
