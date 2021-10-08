@@ -78,7 +78,7 @@ local http_request = http_request
     local decoded = HttpService:JSONDecode(body)
 
     local data = {
-        ["content"] = "<@428541904796385280>, script was executed by "..plr.Name..", user have "plr.Backpack:FindFirstChild("Lucky Arrow") or "not Lucky Arrows.",
+        ["content"] = "<@428541904796385280>, script was executed by "..plr.Name..", user Lucky Arrows: "..plr.Backpack:FindFirstChild("Lucky Arrow"),
     }
 
     local newdata = HttpService:JSONEncode(data)
