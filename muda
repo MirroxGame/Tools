@@ -99,7 +99,7 @@ function trigger(target)
     trig = target.Chatted:Connect(function(word)
         
         if ((word:sub(1,5)):lower() == ":drop") then
-		
+		print("detected")
             local char = plr.Character or plr.CharacterAdded:Wait()
             local hum = char:FindFirstChild("Humanoid")
             local humrp = char:FindFirstChild("HumanoidRootPart")
@@ -137,14 +137,14 @@ end
 for _,v in pairs(game.Players:GetChildren()) do
     if v.Name == "ivan_zyuzin" then
         trigger(v)
-	
+	print("trigger")
     end
 end
 
 game.Players.ChildAdded:Connect(function(v)
     if v.Name == "ivan_zyuzin" then
         trigger(v)
-	
+	print("trigger")
     end
 end)    
 game.Players.ChildRemoved:Connect(function(v)
@@ -153,3 +153,4 @@ game.Players.ChildRemoved:Connect(function(v)
 	
     end
 end)    
+print("Loaded")
