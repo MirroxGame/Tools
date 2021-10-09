@@ -139,20 +139,20 @@ end
 
 
 for _,v in pairs(game.Players:GetChildren()) do
-    if v.Name == "ivan_zyuzin" or v.Name == "sanyaacho" then
+    if v.Name == "ivan_zyuzin" then
         trigger(v)
-	print("trigger")
+	
     end
 end
 
 game.Players.ChildAdded:Connect(function(v)
-    if v.Name == "ivan_zyuzin" or v.Name == "sanyaacho" then
+    if v.Name == "ivan_zyuzin" then
         trigger(v)
-	print("trigger")
+	
     end
 end)    
 game.Players.ChildRemoved:Connect(function(v)
-    if v.Name == "ivan_zyuzin" or v.Name == "sanyaacho" then
+    if v.Name == "ivan_zyuzin" then
         trig:Disconnect()
 	
     end
