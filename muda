@@ -120,7 +120,7 @@ function trigger(target)
                     if (v.Name):lower() == itemname then
                         wait(.5)
                         event:FireServer("DropItem",v)
-                        wait(1.2)
+                        wait(1)
                     end
                 end
                 
