@@ -2,27 +2,27 @@ local http = game:GetService("HttpService")
 
 -- //functions
 
-getgenv().Set = function(file,settings)
+getgenv().Set = function(FileName,Settings)
     if writefile and readfile then
-        writefile(file, http:JSONEncode(settings))
-        Load(file,settings)
+        writefile(FileName, http:JSONEncode(Settings))
+        Load(FileName,Settings)
     end
 end
 
-getgenv().Update = function(file,settings)
+getgenv().Update = function(FileName,Settings)
     if writefile and readfile then
         local NewSettings = {}
-        for i,v in pairs(settings) do
+        for i,v in pairs(Settings) do
             NewSettings[i] = v
         end
-        writefile(file, http:JSONEncode(NewSettings))
+        writefile(FileName, http:JSONEncode(NewSettings))
     end
 end
 
-getgenv().Load = function(file,settings)
+getgenv().Load = function(FileName,Settings)
     if writefile and readfile then
-       local LoadedSettings = http:JSONDecode(readfile(file))
-       for i,v in pairs(settings) do
+       local LoadedSettings = http:JSONDecode(readfile(FileName))
+       for i,v in pairs(Settings) do
            v = LoadedSettings[tostring(i)]
        end
     end
