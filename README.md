@@ -47,3 +47,7 @@ Updates `FileName` with `Settings`
 ```
 
 Loads the `FileName` data to `Settings`
+
+# Note
+
+This project can contain bugs, if you find a bug make a pull request.
