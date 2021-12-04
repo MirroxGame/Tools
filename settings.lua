@@ -4,6 +4,7 @@ local http = game:GetService("HttpService")
 
 getgenv().Set = function(FileName,Settings)
     if writefile and readfile then
+        if FileName:match("/") then makefolder(FileName:sub(1,FileName:find("/") - 1) end
         writefile(FileName, http:JSONEncode(Settings))
         Load(FileName,Settings)
     end
