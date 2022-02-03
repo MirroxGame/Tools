@@ -17,16 +17,16 @@ getgenv().Set = function(FileName,Settings)
 end
 
 getgenv().Update = function(FileName,Settings)
-        local NewSettings = {}
-        for i,v in pairs(Settings) do
-            NewSettings[i] = v
-        end
-        writefile(FileName, http:JSONEncode(NewSettings))
+    local NewSettings = {}
+    for i,v in pairs(Settings) do
+        NewSettings[i] = v
+    end
+    writefile(FileName, http:JSONEncode(NewSettings))
 end
 
 getgenv().Load = function(FileName,Settings)
-       local LoadedSettings = http:JSONDecode(readfile(FileName))
-       for i,v in pairs(Settings) do
-           v = LoadedSettings[tostring(i)]
-       end
+    local LoadedSettings = http:JSONDecode(readfile(FileName))
+    for i,v in pairs(Settings) do
+        v = LoadedSettings[tostring(i)]
+    end
 end
