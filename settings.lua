@@ -12,7 +12,7 @@ getgenv().Set = function(FileName,Settings)
     if FileName:match("/") then
         makefolder(FileName:sub(1,FileName:find("/") - 1))
     end
-    writefile(FileName, http:JSONEncode(Settings))
+    writefile(FileName, HP:JSONEncode(Settings))
     Load(FileName,Settings)
 end
 
@@ -21,11 +21,11 @@ getgenv().Update = function(FileName,Settings)
     for i,v in pairs(Settings) do
         NewSettings[i] = v
     end
-    writefile(FileName, http:JSONEncode(NewSettings))
+    writefile(FileName, HP:JSONEncode(NewSettings))
 end
 
 getgenv().Load = function(FileName,Settings)
-    local LoadedSettings = http:JSONDecode(readfile(FileName))
+    local LoadedSettings = HP:JSONDecode(readfile(FileName))
     for i,v in pairs(Settings) do
         v = LoadedSettings[tostring(i)]
     end
