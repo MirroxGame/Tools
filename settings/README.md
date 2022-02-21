@@ -17,7 +17,7 @@
    if not ExistingFile then
      Set(FileName,Settings)
    else
-     Load(FileName,Settings)
+     Settings = Load(FileName,Settings)
    end
  end
 ```
@@ -43,7 +43,7 @@ Updates `FileName` with `Settings`
 ## Load
 
 ```lua
- <void> Load(<string> FileName, <table> Settings)
+ <table> Load(<string> FileName, <table> Settings)
 ```
 
 Loads the `FileName` data to `Settings`
