@@ -27,5 +27,6 @@ end
 
 getgenv().Load = function(FileName,Settings)
     local LoadedSettings = HP:JSONDecode(readfile(FileName))
+        print(LoadedSettings)
     return LoadedSettings
 end
