@@ -24,6 +24,7 @@ end
 getgenv().Update = function(FileName,Settings)
   local ExistingFile = pcall(readfile, FileName)
   if not ExistingFile then
+    print(FileName)
     Set(FileName,Settings)
   else
     writefile(FileName, HP:JSONEncode(Settings))
