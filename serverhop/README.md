@@ -7,7 +7,7 @@ loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/MirroxGame/Tools
 # Usage
 
 ```lua
-  Teleport()
+Teleport()
 ```
 
 # Note
