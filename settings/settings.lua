@@ -9,8 +9,8 @@ assert(readfile,"Your exploit does not support readfile function.")
         
 -- //functions
 
-getgenv().Load = function(FileName,TempData)
-    TempData = HP:JSONDecode(readfile(FileName))
+getgenv().Load = function(FileName)
+    return HP:JSONDecode(readfile(FileName))
 end
 
 getgenv().Set = function(FileName,Settings)
