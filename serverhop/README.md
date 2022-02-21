@@ -1,7 +1,7 @@
 # Loader
 
 ```lua
-loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/MirroxGame/Tools/serverhop/main/serverhop.lua'))()
+loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/MirroxGame/Tools/main/serverhop/serverhop.lua'))()
 ```
 
 # Usage
