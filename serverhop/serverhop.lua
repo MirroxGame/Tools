@@ -56,7 +56,7 @@ function TPReturner()
     end
 end
 
-function Teleport()
+getgenv().Teleport = function()
     while wait() do
         pcall(function()
             TPReturner()
