@@ -10,7 +10,7 @@ assert(readfile,"Your exploit does not support readfile function.")
 -- //functions
 
 getgenv().Load = function(FileName,Settings)
-    return HP:JSONDecode(readfile(FileName))
+    Settings = HP:JSONDecode(readfile(FileName))
 end
 
 getgenv().Set = function(FileName,Settings)
