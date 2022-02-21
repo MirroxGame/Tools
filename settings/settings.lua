@@ -4,8 +4,9 @@ local HP = game:GetService("HttpService")
 
 --//checking
 
-if not writefile or not readfile then return error("Your exploit does not support writefile or readfile function.") end
-
+assert(writefile,"Your exploit does not support writefile function.)
+assert(readfile,"Your exploit does not support readfile function.)
+        
 -- //functions
 
 getgenv().Set = function(FileName,Settings)
