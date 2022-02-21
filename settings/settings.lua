@@ -4,8 +4,8 @@ local HP = game:GetService("HttpService")
 
 --//checking
 
-assert(writefile,"Your exploit does not support writefile function.)
-assert(readfile,"Your exploit does not support readfile function.)
+assert(writefile,"Your exploit does not support writefile function.")
+assert(readfile,"Your exploit does not support readfile function.")
         
 -- //functions
 
