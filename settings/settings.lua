@@ -9,6 +9,10 @@ assert(readfile,"Your exploit does not support readfile function.")
         
 -- //functions
 
+getgenv().Load = function(FileName,Settings)
+    return HP:JSONDecode(readfile(FileName))
+end
+
 getgenv().Set = function(FileName,Settings)
     if FileName:match("/") then
         makefolder(FileName:sub(1,FileName:find("/") - 1))
@@ -23,8 +27,4 @@ getgenv().Update = function(FileName,Settings)
         NewSettings[i] = v
     end
     writefile(FileName, HP:JSONEncode(NewSettings))
-end
-
-getgenv().Load = function(FileName,Settings)
-    return HP:JSONDecode(readfile(FileName))
 end
