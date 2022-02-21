@@ -1,13 +1,13 @@
 # Loader
 
 ```lua
-loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/MirroxGame/Tools/main/serverhop/serverhop.lua'))()
+  loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/MirroxGame/Tools/main/serverhop/serverhop.lua'))()
 ```
 
 # Usage
 
 ```lua
-Teleport()
+  <void> Teleport(<void>)
 ```
 
 # Note
