@@ -26,5 +26,5 @@ getgenv().Update = function(FileName,Settings)
 end
 
 getgenv().Load = function(FileName,Settings)
-    return HP:JSONDecode(readfile(FileName))
+    Settings = HP:JSONDecode(readfile(FileName))
 end
