@@ -1,8 +1,16 @@
+--//variables
+
 local PlaceID = game.PlaceId
 local AllIDs = {}
 local foundAnything = ""
 local actualHour = os.date("!*t").hour
 local Deleted = false
+
+--//checking
+
+assert(writefile,"Your exploit does not support writefile function.")
+assert(readfile,"Your exploit does not support readfile function.")
+
 local File = pcall(function()
     AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
 end)
@@ -10,6 +18,9 @@ if not File then
     table.insert(AllIDs, actualHour)
     writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
 end
+
+--//functions
+
 function TPReturner()
     local Site;
     if foundAnything == "" then
@@ -56,6 +67,7 @@ function TPReturner()
     end
 end
 
+--//main function
 getgenv().Teleport = function()
     while wait() do
         pcall(function()
