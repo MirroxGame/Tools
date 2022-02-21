@@ -22,6 +22,6 @@ Load(FileName,Settings)
 end
 
 getgenv().Update = function(FileName,Settings)
-if not pcall(readfile, FileName) then Set(FileName,Settings) end
+if not pcall(readfile, FileName) then Set(FileName,Settings) return end
 writefile(FileName, HP:JSONEncode(Settings))
 end
