@@ -70,14 +70,9 @@ end
 --//main function
 getgenv().Teleport = function()
     while wait() do
-        pcall(function()
-            spawn(function()
-                TPReturner()
-                if foundAnything ~= "" then
-                    TPReturner()
-                    break
-                end
-            end)
-        end)
+        TPReturner()
+        if foundAnything ~= "" then
+            TPReturner()
+        end
     end
 end
