@@ -75,6 +75,7 @@ getgenv().Teleport = function()
                 TPReturner()
                 if foundAnything ~= "" then
                     TPReturner()
+                    break
                 end
             end)
         end)
