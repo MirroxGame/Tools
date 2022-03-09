@@ -2,10 +2,13 @@
 
 local HP = game:GetService("HttpService")
 
---//checking
 
-assert(writefile,"Your exploit does not support writefile function.")
-assert(readfile,"Your exploit does not support readfile function.")
+--// check functions
+
+for i,v in pairs({["writefile"] = writefile,["readfile"] = readfile}) do
+    assert(v,("Your exploit does not support %s function."):format(i))
+end
+
 
 -- //functions
 
