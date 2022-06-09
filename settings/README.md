@@ -43,7 +43,7 @@ Updates `FileName` with `Settings`
 ## Load
 
 ```lua
- <void> Load(<string> FileName, <table> Settings)
+ <table> Load(<string> FileName)
 ```
 
 Loads the `FileName` data to `Settings`
