@@ -1,37 +1,46 @@
 --//services
 
-local HP = game:GetService("HttpService")
+local HttpService = game:GetService("HttpService")
 
 
---// check functions
+--//variables
 
-for i,v in pairs({["writefile"] = writefile,["readfile"] = readfile}) do
-    assert(v,("Your exploit does not support %s function."):format(i))
+local ToCheck = {
+    ["writefile"] = writefile,
+    ["readfile"] = readfile,
+    ["makefolder"] = makefolder
+}
+
+
+--//checker
+
+for FunctionName,Function in pairs(ToCheck) do
+    assert(Function,("Your exploit does not support %s function."):format(FunctionName))
 end
 
-
--- //functions
+--//functions
 
 getgenv().Load = function(FileName)
-  if not FileName then return warn("Wrong Arguments!") end
-  return HP:JSONDecode(readfile(FileName))
+    assert(not FileName,"Wrong Arguments!")
+    return HttpService:JSONDecode(readfile(FileName))
 end
 
-getgenv().Set = function(FileName,Settings)
-  if not FileName or not Settings then return warn("Wrong Arguments!") end
-  if FileName:match("/") then
-    makefolder(FileName:sub(1,FileName:find("/") - 1))
-  end
-  writefile(FileName, HP:JSONEncode(Settings))
-  Load(FileName,Settings)
+getgenv().Set = function(FileName,Table)
+    assert(not FileName or not Table,"Wrong Arguments!")
+    if FileName:match("/") then
+        for line in FileName:gmatch("[^/]+") do
+            makefolder(line)
+        end
+    end
+    writefile(FileName, HttpService:JSONEncode(Table))
 end
 
-getgenv().Update = function(FileName,Settings)
-  if not FileName or not Settings then return warn("Wrong Arguments!") end
-  local ExistingFile = pcall(readfile, FileName)
-  if not ExistingFile then
-    Set(FileName,Settings)
-  else
-    writefile(FileName, HP:JSONEncode(Settings))
-  end
+getgenv().Update = function(FileName,Table)
+    assert(not FileName or not Table,"Wrong Arguments!")
+    local ExistingFile = pcall(readfile, FileName)
+    if not ExistingFile then
+        Set(FileName,Settings)
+    else
+        writefile(FileName, HP:JSONEncode(Settings))
+    end
 end
