@@ -13,14 +13,12 @@ Key = "no"
 
 local FileName = "ScriptNameSettings.json" -- must include a .json, change the 'ScriptNameSettings' to what you want
 
-if writefile and readfile then
- local ExistingFile = pcall(readfile, FileName)
+local ExistingFile = pcall(readfile, FileName)
 
- if not ExistingFile then
-  Set(FileName,Settings)
- else
-  Settings = Load(FileName)
- end
+if not ExistingFile then
+ Set(FileName,Settings)
+else
+ Settings = Load(FileName)
 end
 ```
 
