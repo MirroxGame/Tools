@@ -1,25 +1,27 @@
 # Loader
 
 ```lua
- loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/MirroxGame/Tools/main/settings/settings.lua'))()
+ loadstring(game:HttpGet("https://raw.githubusercontent.com/MirroxGame/Tools/main/settings/settings.lua"))()
 ```
 
 # Usage
 
 ```lua
- local Settings = {
-  Key = "no"
- }
+local Settings = {
+Key = "no"
+}
 
- local FileName = "ScriptNameSettings.json" -- must include a .json, change the 'ScriptNameSettings' to what you want
- if writefile and readfile then
-   local ExistingFile = pcall(readfile, FileName)
-   if not ExistingFile then
-     Set(FileName,Settings)
-   else
-     Load(FileName,Settings)
-   end
+local FileName = "ScriptNameSettings.json" -- must include a .json, change the 'ScriptNameSettings' to what you want
+
+if writefile and readfile then
+ local ExistingFile = pcall(readfile, FileName)
+
+ if not ExistingFile then
+  Set(FileName,Settings)
+ else
+  Settings = Load(FileName)
  end
+end
 ```
 
 # Functions
@@ -46,7 +48,7 @@ Updates `FileName` with `Settings`
  <table> Load(<string> FileName)
 ```
 
-Loads the `FileName` data to `Settings`
+Returns the `FileName` data
 
 # Note
 
