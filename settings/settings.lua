@@ -28,8 +28,10 @@ end
 getgenv().Set = function(FileName,Table)
     assert(not FileName or not Table,"Wrong Arguments!")
     if FileName:match("/") then
+        local prev = ""
         for line in FileName:gmatch("[^/]+") do
-            makefolder(line)
+            if prev == "" then prev = line else prev = "/"..prev end
+            makefolder(prev)
         end
     end
     writefile(FileName, HttpService:JSONEncode(Table))
