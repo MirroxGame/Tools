@@ -41,8 +41,8 @@ getgenv().Update = function(FileName,Table)
     assert(FileName or Table,"Wrong Arguments!")
     local ExistingFile = pcall(readfile, FileName)
     if not ExistingFile then
-        Set(FileName,Settings)
+        Set(FileName,Table)
     else
-        writefile(FileName, HttpService:JSONEncode(Settings))
+        writefile(FileName, HttpService:JSONEncode(Table))
     end
 end
