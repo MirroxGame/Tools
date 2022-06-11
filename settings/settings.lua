@@ -21,12 +21,12 @@ end
 --//functions
 
 getgenv().Load = function(FileName)
-    assert(not FileName,"Wrong Arguments!")
+    assert(FileName,"Wrong Arguments!")
     return HttpService:JSONDecode(readfile(FileName))
 end
 
 getgenv().Set = function(FileName,Table)
-    assert(not FileName or not Table,"Wrong Arguments!")
+    assert(FileName or Table,"Wrong Arguments!")
     if FileName:match("/") then
         local prev = ""
         for line in FileName:gmatch("[^/]+") do
@@ -38,7 +38,7 @@ getgenv().Set = function(FileName,Table)
 end
 
 getgenv().Update = function(FileName,Table)
-    assert(not FileName or not Table,"Wrong Arguments!")
+    assert(FileName or Table,"Wrong Arguments!")
     local ExistingFile = pcall(readfile, FileName)
     if not ExistingFile then
         Set(FileName,Settings)
