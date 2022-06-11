@@ -43,6 +43,6 @@ getgenv().Update = function(FileName,Table)
     if not ExistingFile then
         Set(FileName,Settings)
     else
-        writefile(FileName, HP:JSONEncode(Settings))
+        writefile(FileName, HttpService:JSONEncode(Settings))
     end
 end
